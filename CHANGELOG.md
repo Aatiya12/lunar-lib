@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `backstage-catalog-info` cataloger: new `augment-on-commit` sub-cataloger — a
+  commit-triggered companion to the scheduled `augment`. Runs on the
+  `component-repo` hook (`clone-code: true`) so it refreshes a component's
+  owner/domain/tags the moment its repo is committed to, reading
+  `catalog-info.yaml` from the checkout. Shares the parse/match/transform/write
+  pipeline with `augment` via `helpers.sh`; enable either or both with `include`
+  (#212).
 - `backstage-catalog-info` cataloger: new `default_domain` input — assigns a
   fallback domain (written verbatim, with a matching stub `.domains` entry) to
   components whose `catalog-info.yaml` resolves to no domain via
