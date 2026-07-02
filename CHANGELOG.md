@@ -18,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `github-org` cataloger: authenticate GitHub Enterprise Server hosts with
+  `LUNAR_SECRET_GH_ENTERPRISE_TOKEN` (falling back to `LUNAR_SECRET_GH_TOKEN`)
+  instead of always using `LUNAR_SECRET_GH_TOKEN`. Previously a distinct
+  enterprise token set via `LUNAR_SECRET_GH_ENTERPRISE_TOKEN` was ignored and
+  the github.com token was reused for GHE hosts. github.com behavior is
+  unchanged (#226).
 - `backstage-catalog-info` and `backstage` catalogers: an explicit empty
   `tag_prefix` now disables tag prefixing entirely, honoring the documented
   "empty string disables the prefix" behavior. Previously an empty value set in
